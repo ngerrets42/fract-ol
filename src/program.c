@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 11:03:46 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 13:41:14 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/25 14:22:05 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_program	*program_initialize_mlx(void)
 	program->cy = 0.0;
 	program->zoom = DEFAULT_ZOOM;
 	program->iterations = DEFAULT_ITERATIONS;
+	program->zoomi = 0;
 	return (program);
 }
 

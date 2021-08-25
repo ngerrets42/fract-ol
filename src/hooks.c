@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 13:44:42 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/25 14:55:17 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "mandelbrot.h"
 
 /*
-**	Key pressed hook. Used to exit the program (esc) or move the player (wasd).
+**	Key pressed hook. Used to exit the program (esc) or move/zoom
 */
 int	hook_key_pressed(int key, t_program *program)
 {
@@ -36,7 +36,9 @@ int	hook_key_pressed(int key, t_program *program)
 	if (key == KEY_SPACE)
 	{
 		program->zoom *= 0.5;
+		(program->zoomi)++;
 	}
+	program->iterations = 32 + program->zoomi * 8;
 	mandelbrot(program);
 		return (0);
 }

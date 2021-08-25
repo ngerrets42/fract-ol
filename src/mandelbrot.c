@@ -6,12 +6,13 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 11:12:00 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 13:42:34 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/25 14:43:27 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mandelbrot.h"
 #include "colors.h"
+#include <math.h>
 
 #define C_WHITE 0x00ffffff
 #define C_BLACK 0x00000000
@@ -44,33 +45,28 @@ static int	mandelbrot_color(int i, int max_iterations)
 
 static int	mandelbrot_pixel(int x, int y, t_program *program)
 {
-	double	c_r;
-	double	c_x;
-	double	z_r;
-	double	z_r_old;
-	double	z_x;
-	int		i;
+	long double	c[2];
+	long double	z[2];
+	long double	z_old;
+	long double	len;
+	int			i;
 
-	//x = -program->window_w * 0.5 + x + program->shiftx - program->zoom * 0.5;
-	//y = -program->window_h * 0.5 + y + program->shifty - program->zoom * 0.5;
-	//x0 = cx + (i/width - 0.5)*lx;
-	int w = program->window_w;
-	double lx = 2.0 * program->zoom;
-	c_r = program->cx + ( (double)x / (double)w - 0.5) * lx;
-	c_x = program->cy + ( (double)y / (double)w - 0.5) * lx;
-	z_x = 0;
-	z_r = 0;
-	z_r_old = 0;
+	len = 2.0 * program->zoom;
+	c[0] = program->cx + ((long double)x /
+		(long double)program->window_w - 0.5) * len;
+	c[1] = program->cy + ((long double)y /
+		(long double)program->window_w - 0.5) * len;
+	z[0] = 0;
+	z[1] = 0;
+	z_old = 0;
 	i = 0;
-	while (i < program->iterations && z_r < 2.0)
+	while (i < program->iterations && z[0] < 2.0)
 	{
-		z_r_old = z_r;
-		z_r = z_r * z_r + (double)-1 * (z_x * z_x) + c_r;
-		z_x = 2.0 * z_r_old * z_x + c_x;
+		z_old = z[0];
+		z[0] = z[0] * z[0] + -1.0 * (z[1] * z[1]) + c[0];
+		z[1] = 2.0 * z_old * z[1] + c[1];
 		i++;
 	}
-	//if (z_r > 2.0)
-		//return (C_WHITE);
 	return (mandelbrot_color(i, program->iterations));
 }
 
@@ -94,6 +90,8 @@ int	mandelbrot(t_program *program)
 	}
 	mlx_put_image_to_window(program->mlx, program->window,
 		program->screen_buf->img, 0, 0);
-	printf("Mandelbrot Coordinates: (%.13lf, %.13lf)\nZoom Factor: %.13lf\n", program->cx, program->cy, program->zoom);
+	long long magni = pow(2, program->zoomi);
+	printf("Mandelbrot Coordinates: (%.18Lf, %.18Lf)\n", program->cx, program->cy);
+	printf("Zoom Factor: %.18Lf\nMagnification: %lld\n", program->zoom, magni);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 13:41:55 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/25 14:22:13 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ typedef struct s_program
 	void	*window;
 	int		window_w;
 	int		window_h;
-	double	cx;
-	double	cy;
-	double	zoom;
+	long double	cx;
+	long double	cy;
+	long double	zoom;
+	int		zoomi;
 	int		iterations;
 	t_img	*screen_buf;
 }	t_program;
