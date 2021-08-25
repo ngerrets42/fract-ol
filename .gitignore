@@ -1,3 +1,7 @@
+*.swiftmodule
+*.swiftdoc
+fract-ol
+
 # Prerequisites
 *.d
 
