@@ -6,11 +6,11 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:55:06 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 13:08:14 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/30 15:12:20 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandelbrot.h"
+#include "fractals.h"
 
 /*
 **	Apply all the hooks.
@@ -28,7 +28,8 @@ int	main(int argc, char **argv)
 
 	program = program_initialize_mlx(); 
 	apply_hooks(program);
-	mandelbrot(program);
+	//mandelbrot(program);
+	julia(program);
 	mlx_loop(program->mlx);
 	return (0);
 }

@@ -1,6 +1,7 @@
 *.swiftmodule
 *.swiftdoc
 fract-ol
+.vscode/
 
 # Prerequisites
 *.d

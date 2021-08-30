@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 14:22:13 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/30 12:32:27 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stddef.h>
 # include "str.h"
 
-# define DEFAULT_ZOOM 1.0
-# define DEFAULT_ITERATIONS 64
+# define DEFAULT_ZOOM 2.0
+# define DEFAULT_ITERATIONS 10000
 
 typedef struct s_img
 {
