@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 12:39:31 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 16:15:15 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	program_quit(t_program *program);
 int	program_loop(t_program *program);
 
 int	hook_key_pressed(int key, t_program *program);
+int	hook_mouse(int key, int x, int y, t_program *program);
 int	hook_press_x(t_program *program);
 
 #endif

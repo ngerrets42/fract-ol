@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/30 15:10:56 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 12:02:16 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 17:35:31 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "colors.h"
 
 # define ITERATION_START 128
-# define ITERATION_GROWTH 16
-# define ZOOM_FACTOR 120
+# define ITERATION_GROWTH 1
+# define ZOOM_FACTOR 0.9
 # define RE 0
 # define IM 1
 

@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 13:06:57 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 17:44:03 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,55 @@ int	hook_key_pressed(int key, t_program *program)
 	return (0);
 }
 
+static void	set_center(int x, int y, t_program *program)
+{
+	program->cx += ((long double)x /
+		(long double)program->window_w - 0.5) * 2.0 * program->zoom;
+	program->cy += ((long double)y /
+		(long double)program->window_w - 0.5) * 2.0 * program->zoom;
+}
+
+static void	set_cpos(int x, int y, t_program *program)
+{
+	long double	c[2];
+	long double	t1[2];
+	long double	t2[2];
+
+	t1[RE] = program->cx + ((long double)x /
+		(long double)program->window_w - 0.5) * program->zoom;
+	t1[IM] = program->cy + ((long double)y /
+		(long double)program->window_w - 0.5) * program->zoom;
+	t2[RE] = program->cx + ((long double)x /
+		(long double)program->window_w - 0.5) * (program->zoom * ZOOM_FACTOR);
+	t2[IM] = program->cy + ((long double)y /
+		(long double)program->window_w - 0.5) * (program->zoom * ZOOM_FACTOR);
+	c[RE] = program->cx + (t1[RE] - t2[RE]) * 2.0;
+	c[IM] = program->cy + (t1[IM] - t2[IM]) * 2.0;
+	program->cx = c[RE];
+	program->cy = c[IM];
+}
+
 int	hook_mouse(int key, int x, int y, t_program *program)
 {
-	printf("mouse: %d\n", key);
+	if (key == KEY_MB_SCROLLDOWN)
+	{
+		y = program->window_h - y;
+		program->zoom /= (long double)ZOOM_FACTOR;
+		(program->zoomi)--;
+	}
+	if (key == KEY_MB_SCROLLUP)
+	{
+		y = program->window_h - y;
+		set_cpos(x, y, program);
+		program->zoom *= (long double)ZOOM_FACTOR;
+		(program->zoomi)++;
+	}
+	if (key == KEY_MB_LEFT)
+		set_center(x, y, program);
+	program->iterations = ITERATION_START + program->zoomi * ITERATION_GROWTH;
+	if (program->iterations < ITERATION_START)
+		program->iterations = ITERATION_START;
+	fractal(program);
 	return (0);
 }
 

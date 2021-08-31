@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:55:06 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 13:03:30 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 16:15:20 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	apply_hooks(t_program *program)
 	mlx_loop_hook(program->mlx, program_loop, program);
 	mlx_hook(program->window, 2, (1L << 0), hook_key_pressed, program);
 	mlx_hook(program->window, 17, (1L << 17), hook_press_x, program);
+	mlx_hook(program->window, 4, (1L << 4), hook_mouse, program);
 }
 
 int	main(int argc, char **argv)
