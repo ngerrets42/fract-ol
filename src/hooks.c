@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/30 15:12:45 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 13:06:57 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,15 @@ int	hook_key_pressed(int key, t_program *program)
 		program->zoom *= 0.5;
 		(program->zoomi)++;
 	}
-	program->iterations = 32 + program->zoomi * 16;
-	julia(program);
-		return (0);
+	program->iterations = ITERATION_START + program->zoomi * ITERATION_GROWTH;
+	fractal(program);
+	return (0);
+}
+
+int	hook_mouse(int key, int x, int y, t_program *program)
+{
+	printf("mouse: %d\n", key);
+	return (0);
 }
 
 /*

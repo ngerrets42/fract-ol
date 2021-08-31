@@ -6,20 +6,13 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 11:12:00 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/30 15:55:55 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 12:06:30 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
-#include "colors.h"
-#include <math.h>
 
-#define C_WHITE 0x00ffffff
-#define C_BLACK 0x00000000
-#define RE 0
-#define IM 1
-
-static int mandelbrot_greyscale(int i)
+/*static int mandelbrot_greyscale(int i)
 {
 	float	factor;
 	int	r;
@@ -27,16 +20,15 @@ static int mandelbrot_greyscale(int i)
 	int	b;
 	int	base;
 	
-	if (i >= ITERATION_MAX)
-		return (C_WHITE);
+	if (i >= program->iterations)
+		return (0);
 	base = 128;
 	factor = (float)i / ITERATION_MAX;
 	r = base * factor;
 	g = base * factor;
 	b = base * factor;
 	return (0 << 24 | r << 16 | g << 8 | b);
-	//return (0x00FF0000);
-}
+}*/
 
 static int	mandelbrot_color(int i, int max_iterations)
 {
@@ -46,7 +38,7 @@ static int	mandelbrot_color(int i, int max_iterations)
 	return (hue((double)i / 256 + HUE_START));
 }
 
-static int	mandelbrot_pixel(int x, int y, t_program *program)
+int	mandelbrot_pixel(int x, int y, t_program *program)
 {
 	long double	c[2];
 	long double	z[2];
@@ -71,30 +63,4 @@ static int	mandelbrot_pixel(int x, int y, t_program *program)
 		i++;
 	}
 	return (mandelbrot_color(i, program->iterations));
-}
-
-int	mandelbrot(t_program *program)
-{
-	int	x;
-	int	y;
-	int	c;
-
-	y = 0;
-	while (y < program->window_h)
-	{
-		x = 0;
-		while (x < program->window_w)
-		{
-			c = mandelbrot_pixel(x, y, program);
-			img_set_pixel(program->screen_buf, x, y, c);
-			x++;
-		}
-		y++;
-	}
-	mlx_put_image_to_window(program->mlx, program->window,
-		program->screen_buf->img, 0, 0);
-	long long magni = pow(2, program->zoomi);
-	printf("Mandelbrot Coordinates: (%.18Lf, %.18Lf)\n", program->cx, program->cy);
-	printf("Zoom Factor: %.18Lf\nMagnification: %lld\n", program->zoom, magni);
-	return (0);
 }

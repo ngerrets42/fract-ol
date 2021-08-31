@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/30 12:32:27 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 12:39:31 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@
 # include "str.h"
 
 # define DEFAULT_ZOOM 2.0
-# define DEFAULT_ITERATIONS 10000
+# define DEFAULT_ITERATIONS 128
+
+typedef enum e_fractal
+{
+	FRACTAL_MANDLEBROT,
+	FRACTAL_JULIA
+}	t_fractal;
 
 typedef struct s_img
 {
@@ -35,16 +41,19 @@ typedef struct s_img
 
 typedef struct s_program
 {
-	void	*mlx;
-	void	*window;
-	int		window_w;
-	int		window_h;
+	void		*mlx;
+	void		*window;
+	int			window_w;
+	int			window_h;
 	long double	cx;
 	long double	cy;
 	long double	zoom;
-	int		zoomi;
-	int		iterations;
-	t_img	*screen_buf;
+	int			zoomi;
+	int			iterations;
+	t_img		*screen_buf;
+	t_fractal	fractal;
+	long double	arg1;
+	long double	arg2;
 }	t_program;
 
 t_img	*img_create(t_program *program, int w, int h);

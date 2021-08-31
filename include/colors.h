@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 13:29:00 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/30 15:54:21 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 11:55:05 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COLORS_H
 
 # define HUE_START 0.5
+# define C_BLACK 0x00000000
 
 typedef struct s_rgb
 {

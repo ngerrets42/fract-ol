@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:00:08 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:36:06 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 12:54:41 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 int		ft_strlen(const char *str);
 void	put(const char *str, const int *n);
+int		str_is_str(const char *str1, const char *str2);
+double	str_to_double(char *str);
 
 #endif

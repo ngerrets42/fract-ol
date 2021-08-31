@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 13:26:29 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/25 13:39:07 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 13:05:59 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_rgb	colormap_get(int i)
 	static t_rgb	c[] =
 	{
 		{66, 30, 15},
-		{25, 7 ,26},
+		{25, 7, 26},
 		{9, 1, 47},
 		{4, 4, 73},
 		{0, 7, 100},

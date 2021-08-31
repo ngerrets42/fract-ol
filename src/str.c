@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:01:02 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:36:21 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/31 12:22:08 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,18 @@ void	put(const char *str, const int *n)
 	if (n != NULL)
 		ft_putnbr_fd(*n, 1);
 	write(1, &"\n", sizeof(char));
+}
+
+int	str_is_str(const char *str1, const char *str2)
+{
+	int	i;
+
+	i = 0;
+	while (str1[i] == str2[i])
+	{
+		if (str1[i] == '\0')
+			return (1);
+		i++;
+	}
+	return (0);
 }
