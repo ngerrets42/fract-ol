@@ -6,18 +6,21 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 11:43:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 13:16:40 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 17:28:10 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
+#include <stdio.h>
 
 static int	fractal_pixel(int x, int y, t_program *program)
 {
-	if (program->fractal == FRACTAL_MANDLEBROT)
+	if (program->fractal == FRACTAL_MANDELBROT)
 		return (mandelbrot_pixel(x, y, program));
 	if (program->fractal == FRACTAL_JULIA)
 		return (julia_pixel(x, y, program));
+	if (program->fractal == FRACTAL_MANDELBULB)
+		return (mandelbulb_pixel(x, y, program));
 	return (1);
 }
 
@@ -26,7 +29,6 @@ int	fractal(t_program *program)
 	int			x;
 	int			y;
 	int			c;
-	long long	magni;
 
 	y = 0;
 	while (y < program->window_h)
@@ -42,10 +44,7 @@ int	fractal(t_program *program)
 	}
 	mlx_put_image_to_window(program->mlx, program->window,
 		program->screen_buf->img, 0, 0);
-	magni = pow(2, program->zoomi);
 	printf("Fractal Coordinates: (%.18Lf, %.18Lf)\n", program->cx, program->cy);
-	printf("Zoom Factor: %.18Lf\nMagnification: %lld\n", program->zoom, magni);
-	if (program->fractal == FRACTAL_JULIA)
-		printf("Julia arguments REAL: %.18Lf IMAGINARY: %.18Lf\n", program->arg1, program->arg2);
+	printf("Magnification: %lld\n\n", (long long)(2.0 / program->zoom));
 	return (0);
 }

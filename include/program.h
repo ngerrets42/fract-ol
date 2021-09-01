@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 16:15:15 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 19:20:07 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,18 @@
 
 typedef enum e_fractal
 {
-	FRACTAL_MANDLEBROT,
-	FRACTAL_JULIA
+	FRACTAL_MANDELBROT,
+	FRACTAL_JULIA,
+	FRACTAL_MANDELBULB
 }	t_fractal;
+
+typedef enum e_colormode
+{
+	COLORMODE_SIMPLE,
+	COLORMODE_HUE,
+	COLORMODE_GREYSCALE,
+	COLORMODE_COUNT
+}	t_colormode;
 
 typedef struct s_img
 {
@@ -48,24 +57,23 @@ typedef struct s_program
 	long double	cx;
 	long double	cy;
 	long double	zoom;
-	int			zoomi;
 	int			iterations;
 	t_img		*screen_buf;
 	t_fractal	fractal;
+	t_colormode	colormode;
 	long double	arg1;
 	long double	arg2;
 }	t_program;
 
-t_img	*img_create(t_program *program, int w, int h);
-void	img_destroy(t_program *program, t_img *img);
-void	img_set_pixel(t_img *img, int x, int y, int trgb);
+t_img		*img_create(t_program *program, int w, int h);
+void		img_destroy(t_program *program, t_img *img);
+void		img_set_pixel(t_img *img, int x, int y, int trgb);
 
 t_program	*program_initialize_mlx(void);
-void	program_quit(t_program *program);
-int	program_loop(t_program *program);
+void		program_quit(t_program *program);
 
-int	hook_key_pressed(int key, t_program *program);
-int	hook_mouse(int key, int x, int y, t_program *program);
-int	hook_press_x(t_program *program);
+int			hook_key_pressed(int key, t_program *program);
+int			hook_mouse(int key, int x, int y, t_program *program);
+int			hook_press_x(t_program *program);
 
 #endif

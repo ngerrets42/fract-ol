@@ -6,23 +6,11 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/30 14:54:38 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 13:14:14 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 16:22:21 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
-
-#define RE 0
-#define IM 1
-#define C_BLACK 0x00000000
-
-static int	julia_color(int i, int max_iterations)
-{
-	if (i >= max_iterations)
-		return (C_BLACK);
-	//return (colormap_get_trgb(i));
-	return (hue((double)i / 256 + HUE_START));
-}
 
 int	julia_pixel(int x, int y, t_program *program)
 {
@@ -50,5 +38,5 @@ int	julia_pixel(int x, int y, t_program *program)
 			break ;
 		i++;
 	}
-	return (julia_color(i, program->iterations));
+	return (color_from_iterations(i, program->iterations, program));
 }

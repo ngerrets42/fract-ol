@@ -6,37 +6,11 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 11:12:00 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 12:06:30 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 16:24:16 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
-
-/*static int mandelbrot_greyscale(int i)
-{
-	float	factor;
-	int	r;
-	int	g;
-	int	b;
-	int	base;
-	
-	if (i >= program->iterations)
-		return (0);
-	base = 128;
-	factor = (float)i / ITERATION_MAX;
-	r = base * factor;
-	g = base * factor;
-	b = base * factor;
-	return (0 << 24 | r << 16 | g << 8 | b);
-}*/
-
-static int	mandelbrot_color(int i, int max_iterations)
-{
-	if (i >= max_iterations)
-		return (C_BLACK);
-	//return (colormap_get_trgb(i));
-	return (hue((double)i / 256 + HUE_START));
-}
 
 int	mandelbrot_pixel(int x, int y, t_program *program)
 {
@@ -62,5 +36,5 @@ int	mandelbrot_pixel(int x, int y, t_program *program)
 		z[IM] = 2.0 * z_old * z[IM] + c[IM];
 		i++;
 	}
-	return (mandelbrot_color(i, program->iterations));
+	return (color_from_iterations(i, program->iterations, program));
 }

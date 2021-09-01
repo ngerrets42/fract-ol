@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 11:03:46 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 12:09:03 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 16:29:46 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_program	*program_initialize_mlx(void)
 	program->cy = 0.0;
 	program->zoom = DEFAULT_ZOOM;
 	program->iterations = DEFAULT_ITERATIONS;
-	program->zoomi = 0;
+	program->colormode = COLORMODE_GREYSCALE;
 	return (program);
 }
 
@@ -74,12 +74,4 @@ void	program_quit(t_program *program)
 		free(program);
 	}
 	exit(0);
-}
-
-/*
-**	Main program loop. Update animations, positions and draw the screen if necessary.
-*/
-int	program_loop(t_program *program)
-{
-	return (0);
 }

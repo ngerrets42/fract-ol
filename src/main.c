@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:55:06 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 16:15:20 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 17:27:58 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,19 @@ static int	parse(int argc, char **argv, t_program *program)
 	}
 	if (str_is_str("mandelbrot", argv[1]))
 	{
-		program->fractal = FRACTAL_MANDLEBROT;
+		program->fractal = FRACTAL_MANDELBROT;
 		if (argc != 2)
 		{
 			printf("Error\n- Mandelbrot requires no additional arguments!\n");
+			program_quit(program);
+		}
+	}
+	else if (str_is_str("mandelbulb", argv[1]))
+	{
+		program->fractal = FRACTAL_MANDELBULB;
+		if (argc != 2)
+		{
+			printf("Error\n- Mandelbulb requires no additional arguments!\n");
 			program_quit(program);
 		}
 	}
@@ -64,7 +73,6 @@ static int	parse(int argc, char **argv, t_program *program)
 */
 static void	apply_hooks(t_program *program)
 {
-	mlx_loop_hook(program->mlx, program_loop, program);
 	mlx_hook(program->window, 2, (1L << 0), hook_key_pressed, program);
 	mlx_hook(program->window, 17, (1L << 17), hook_press_x, program);
 	mlx_hook(program->window, 4, (1L << 4), hook_mouse, program);

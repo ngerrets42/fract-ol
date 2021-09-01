@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 17:44:03 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/01 16:19:58 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ int	hook_key_pressed(int key, t_program *program)
 		program->cy -= 0.5 * program->zoom;
 	if (key == KEY_S)
 		program->cy += 0.5 * program->zoom;
-	if (key == KEY_Z && program->iterations > 1)
-		program->iterations /= 2;
-	if (key == KEY_X)
+	if (key == KEY_Z)
 		program->iterations *= 2;
+	if (key == KEY_X)
+		program->iterations *= 0.5;
+	if (key == KEY_Q)
+		(program->colormode)++;
 	if (key == KEY_SPACE)
-	{
 		program->zoom *= 0.5;
-		(program->zoomi)++;
-	}
-	program->iterations = ITERATION_START + program->zoomi * ITERATION_GROWTH;
+	if (program->colormode == COLORMODE_COUNT)
+		program->colormode = 0;
 	fractal(program);
 	return (0);
 }
 
 static void	set_center(int x, int y, t_program *program)
 {
-	program->cx += ((long double)x /
+	program->cx += ((long double)x / \
 		(long double)program->window_w - 0.5) * 2.0 * program->zoom;
-	program->cy += ((long double)y /
+	program->cy += ((long double)y / \
 		(long double)program->window_w - 0.5) * 2.0 * program->zoom;
 }
 
@@ -57,13 +57,13 @@ static void	set_cpos(int x, int y, t_program *program)
 	long double	t1[2];
 	long double	t2[2];
 
-	t1[RE] = program->cx + ((long double)x /
+	t1[RE] = program->cx + ((long double)x / \
 		(long double)program->window_w - 0.5) * program->zoom;
-	t1[IM] = program->cy + ((long double)y /
+	t1[IM] = program->cy + ((long double)y / \
 		(long double)program->window_w - 0.5) * program->zoom;
-	t2[RE] = program->cx + ((long double)x /
+	t2[RE] = program->cx + ((long double)x / \
 		(long double)program->window_w - 0.5) * (program->zoom * ZOOM_FACTOR);
-	t2[IM] = program->cy + ((long double)y /
+	t2[IM] = program->cy + ((long double)y / \
 		(long double)program->window_w - 0.5) * (program->zoom * ZOOM_FACTOR);
 	c[RE] = program->cx + (t1[RE] - t2[RE]) * 2.0;
 	c[IM] = program->cy + (t1[IM] - t2[IM]) * 2.0;
@@ -77,20 +77,15 @@ int	hook_mouse(int key, int x, int y, t_program *program)
 	{
 		y = program->window_h - y;
 		program->zoom /= (long double)ZOOM_FACTOR;
-		(program->zoomi)--;
 	}
 	if (key == KEY_MB_SCROLLUP)
 	{
 		y = program->window_h - y;
 		set_cpos(x, y, program);
 		program->zoom *= (long double)ZOOM_FACTOR;
-		(program->zoomi)++;
 	}
 	if (key == KEY_MB_LEFT)
 		set_center(x, y, program);
-	program->iterations = ITERATION_START + program->zoomi * ITERATION_GROWTH;
-	if (program->iterations < ITERATION_START)
-		program->iterations = ITERATION_START;
 	fractal(program);
 	return (0);
 }
