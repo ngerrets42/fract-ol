@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/30 15:10:56 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/01 17:26:10 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/02 17:21:48 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 int	mandelbrot_pixel(int x, int y, t_program *program);
 int	julia_pixel(int x, int y, t_program *program);
 int	mandelbulb_pixel(int x, int y, t_program *program);
+int	morefractal_pixel(int x, int y, t_program *program);
 int	fractal(t_program *program);
 
 #endif

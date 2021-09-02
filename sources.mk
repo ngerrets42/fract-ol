@@ -7,6 +7,7 @@ SOURCES :=	src/colormap.c \
 	src/main.c \
 	src/mandelbrot.c \
 	src/mandelbulb.c \
+	src/more_fractal.c \
 	src/program.c \
 	src/str.c \
 	src/str_to_double.c \

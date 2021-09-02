@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 11:43:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/01 17:28:10 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/02 17:22:09 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	fractal_pixel(int x, int y, t_program *program)
 	if (program->fractal == FRACTAL_JULIA)
 		return (julia_pixel(x, y, program));
 	if (program->fractal == FRACTAL_MANDELBULB)
-		return (mandelbulb_pixel(x, y, program));
+		return (morefractal_pixel(x, y, program));
 	return (1);
 }
 
