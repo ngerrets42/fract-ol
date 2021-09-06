@@ -6,12 +6,27 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 11:43:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/02 17:22:09 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/06 15:21:31 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
 #include <stdio.h>
+
+t_complex	complex_coordinates(int x, int y, t_program *program)
+{
+	long double	len;
+	t_complex	c;
+	
+	len = 2.0 * program->zoom;
+	c = _complex(
+		((long double)x / (long double)program->window_w - 0.5) * len
+		+ program->cx,
+		((long double)y / (long double)program->window_h - 0.5) * len
+		+ program->cy
+		);
+	return (c);
+}
 
 static int	fractal_pixel(int x, int y, t_program *program)
 {
@@ -19,8 +34,8 @@ static int	fractal_pixel(int x, int y, t_program *program)
 		return (mandelbrot_pixel(x, y, program));
 	if (program->fractal == FRACTAL_JULIA)
 		return (julia_pixel(x, y, program));
-	if (program->fractal == FRACTAL_MANDELBULB)
-		return (morefractal_pixel(x, y, program));
+	if (program->fractal == FRACTAL_NEWTON)
+		return (newton_pixel(x, y, program));
 	return (1);
 }
 

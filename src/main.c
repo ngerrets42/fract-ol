@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:55:06 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/01 17:27:58 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/06 14:59:03 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ static int	parse(int argc, char **argv, t_program *program)
 			program_quit(program);
 		}
 	}
-	else if (str_is_str("mandelbulb", argv[1]))
+	else if (str_is_str("newton", argv[1]))
 	{
-		program->fractal = FRACTAL_MANDELBULB;
+		program->fractal = FRACTAL_NEWTON;
 		if (argc != 2)
 		{
-			printf("Error\n- Mandelbulb requires no additional arguments!\n");
+			printf("Error\n- Newton requires no additional arguments!\n");
 			program_quit(program);
 		}
 	}

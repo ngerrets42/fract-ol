@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/02 11:42:30 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/06 14:30:14 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_fractal
 {
 	FRACTAL_MANDELBROT,
 	FRACTAL_JULIA,
-	FRACTAL_MANDELBULB
+	FRACTAL_NEWTON
 }	t_fractal;
 
 typedef enum e_colormode
