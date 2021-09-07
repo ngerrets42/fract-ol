@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 14:44:15 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 15:00:49 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	hook_key_pressed(int key, t_program *program)
 {
 	if (key == KEY_ESC)
 		program_quit(program);
-	if (key == KEY_A)
+	if (key == KEY_A || key == KEY_LEFT)
 		program->cx -= 0.5 * program->zoom;
-	if (key == KEY_D)
+	if (key == KEY_D || key == KEY_RIGHT)
 		program->cx += 0.5 * program->zoom;
-	if (key == KEY_W)
+	if (key == KEY_W || key == KEY_UP)
 		program->cy -= 0.5 * program->zoom;
-	if (key == KEY_S)
+	if (key == KEY_S || key == KEY_DOWN)
 		program->cy += 0.5 * program->zoom;
 	if (key == KEY_Z)
 		program->iterations *= 2;

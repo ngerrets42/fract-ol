@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 11:09:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 16:16:26 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:58:27 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 #  define KEY_MB_RIGHT 3
 #  define KEY_MB_SCROLLUP 5
 #  define KEY_MB_SCROLLDOWN 4
+#  define KEY_LEFT 123
+#  define KEY_UP 126
+#  define KEY_RIGHT 124
+#  define KEY_DOWN 125
 # else
 #  define KEY_ESC 53
 #  define KEY_W 13
@@ -45,6 +49,10 @@
 #  define KEY_MB_RIGHT 2
 #  define KEY_MB_SCROLLUP 5
 #  define KEY_MB_SCROLLDOWN 4
+#  define KEY_LEFT 123
+#  define KEY_UP 126
+#  define KEY_RIGHT 124
+#  define KEY_DOWN 125
 # endif
 
 #endif
