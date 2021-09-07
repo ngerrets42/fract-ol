@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/30 15:51:22 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/01 16:27:29 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 12:48:58 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int	color_from_iterations(int i, int max_iterations, t_program *program)
 	if (i >= max_iterations)
 		return (C_BLACK);
 	if (program->colormode == COLORMODE_SIMPLE)
-		return (colormap_get_trgb(i));
+		return (colormap_get_trgb(colormap_16_get, i));
 	if (program->colormode == COLORMODE_HUE)
 		return (hue((double)i / 256 + HUE_START));
 	if (program->colormode == COLORMODE_GREYSCALE)
 		return (greyscale((double)i / 256));
+	if (program->colormode == COLORMODE_NEWTON)
+		return (colormap_get_trgb(colormap_3_get, i));
 	return (C_BLACK);
 }

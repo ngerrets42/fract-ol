@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/06 14:30:14 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 12:47:52 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef enum e_colormode
 	COLORMODE_SIMPLE,
 	COLORMODE_HUE,
 	COLORMODE_GREYSCALE,
+	COLORMODE_NEWTON,
 	COLORMODE_COUNT
 }	t_colormode;
 

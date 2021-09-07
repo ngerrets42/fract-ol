@@ -6,13 +6,25 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 13:26:29 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 13:05:59 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 12:48:07 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
 
-static t_rgb	colormap_get(int i)
+t_rgb	colormap_3_get(int i)
+{
+	static t_rgb	c[] =
+	{
+		{255, 10, 10},
+		{10, 255, 10},
+		{10, 10, 255}
+	};
+
+	return (c[i % 3]);
+}
+
+t_rgb	colormap_16_get(int i)
 {
 	static t_rgb	c[] =
 	{
@@ -37,10 +49,12 @@ static t_rgb	colormap_get(int i)
 	return (c[i % 16]);
 }
 
-int	colormap_get_trgb(int i)
+int	colormap_get_trgb(t_rgb(*colormap)(int), int i)
 {
 	t_rgb	c;
 
-	c = colormap_get(i);
+	if (colormap == NULL)
+		return (C_BLACK);
+	c = colormap(i);
 	return (0 << 24 | c.r << 16 | c.g << 8 | c.b);
 }
