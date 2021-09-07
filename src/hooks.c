@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/01 16:19:58 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:44:15 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int	hook_key_pressed(int key, t_program *program)
 	return (0);
 }
 
+/*
+**	Sets the programs complex-plane coordinates according to x, y and zoom
+*/
 static void	set_center(int x, int y, t_program *program)
 {
 	program->cx += ((long double)x / \
@@ -51,6 +54,10 @@ static void	set_center(int x, int y, t_program *program)
 		(long double)program->window_w - 0.5) * 2.0 * program->zoom;
 }
 
+/*
+**	Sets the programs complex-plane coordinates in order to zoom smoothly to
+**	the mouse position.
+*/
 static void	set_cpos(int x, int y, t_program *program)
 {
 	long double	c[2];
@@ -71,6 +78,9 @@ static void	set_cpos(int x, int y, t_program *program)
 	program->cy = c[IM];
 }
 
+/*
+**	Mouse buttons window X hook. Used to zoom.
+*/
 int	hook_mouse(int key, int x, int y, t_program *program)
 {
 	if (key == KEY_MB_SCROLLDOWN)

@@ -6,67 +6,11 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:55:06 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/06 14:59:03 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:39:39 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
-#include <stdio.h>
-
-static void	print_fractals(void)
-{
-	printf("Available fractals are:\n");
-	printf("	mandelbrot (void)\n	julia (double, double)\n");
-}
-
-static void	parse_julia(int argc, char **argv, t_program *program)
-{
-	program->fractal = FRACTAL_JULIA;
-	if (argc != 4)
-	{
-		printf("Error\n- julia fractal needs a max of 2 addition arguments\n");
-		program_quit(program);
-	}
-	program->arg1 = str_to_double(argv[2]);
-	program->arg2 = str_to_double(argv[3]);
-}
-
-static int	parse(int argc, char **argv, t_program *program)
-{
-	if (argc < 2)
-	{
-		printf("Error\n- Need at least an argument to specify the fractal.\n");
-		print_fractals();
-		return (1);
-	}
-	if (str_is_str("mandelbrot", argv[1]))
-	{
-		program->fractal = FRACTAL_MANDELBROT;
-		if (argc != 2)
-		{
-			printf("Error\n- Mandelbrot requires no additional arguments!\n");
-			program_quit(program);
-		}
-	}
-	else if (str_is_str("newton", argv[1]))
-	{
-		program->fractal = FRACTAL_NEWTON;
-		if (argc != 2)
-		{
-			printf("Error\n- Newton requires no additional arguments!\n");
-			program_quit(program);
-		}
-	}
-	else if (str_is_str("julia", argv[1]))
-		parse_julia(argc, argv, program);
-	else
-	{
-		printf("Error\n- Not a valid fractal!\n");
-		print_fractals();
-		return (1);
-	}
-	return (0);
-}
 
 /*
 **	Apply all the hooks.
@@ -82,9 +26,16 @@ int	main(int argc, char **argv)
 {
 	t_program	*program;
 
-	program = program_initialize_mlx();
-	if (parse(argc, argv, program) == 1)
-		program_quit(program);
+	program = program_init();
+	if (program == NULL)
+		return (1);
+	if (parse(argc, argv, program) == 0)
+	{
+		free(program);
+		return (1);
+	}
+	if (program_initialize_mlx(program) == 0)
+		return (1);
 	apply_hooks(program);
 	fractal(program);
 	mlx_loop(program->mlx);

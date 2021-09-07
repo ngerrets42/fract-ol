@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/06 14:30:25 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:51:47 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:31:22 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 
 #define ROOT_THREE 1.73205080757
 #define TOLERANCE 0.001
-
-static t_complex	*roots(void)
-{
-	static t_complex	roots[] =
-	{
-		{1, 0},
-		{-0.5, ROOT_THREE * 0.5},
-		{-0.5, -ROOT_THREE * 0.5}
-	};
-
-	return (roots);
-}
 
 static t_complex	func(t_complex z)
 {
@@ -121,29 +109,3 @@ int	newton_pixel(int x, int y, t_program *program)
 		return (color_from_iterations(root, 4, program));
 	return (color_from_iterations(i, program->iterations, program));
 }
-
-/*
-int	newton_pixel(int x, int y, t_program *program)
-{
-	t_complex	z;
-	t_complex	z2;
-	int			i;
-	int			root;
-
-	z = complex_coordinates(x, y, program);
-	i = 0;
-	while (i < 50)
-	{
-		z2 = complex_div(func(z), derivative(z));
-		if (fabsl(z2.re) < TOLERANCE && fabsl(z2.im) < TOLERANCE)
-			break ;
-		z.re -= z2.re;
-		z.im -= z2.im;
-		i++;
-	}
-	root = closest_root
-(z);
-	if (root == 0)
-		return (C_BLACK);
-	return (color_from_iterations(root, 16, program));
-}*/

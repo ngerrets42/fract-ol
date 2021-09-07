@@ -6,14 +6,14 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/06 14:44:02 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 10:39:26 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:45:18 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMPLEX_NUMBERS_H
 # define COMPLEX_NUMBERS_H
 
-#include <math.h>
+# include <math.h>
 
 typedef struct s_complex
 {

@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 11:43:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:13:40 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:44:05 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ t_complex	complex_coordinates(int x, int y, t_program *program)
 {
 	long double	len;
 	t_complex	c;
-	
+
 	len = 2.0 * program->zoom;
-	c = _complex(
-		((long double)x / (long double)program->window_w - 0.5) * len
-		+ program->cx,
-		((long double)y / (long double)program->window_h - 0.5) * len
-		+ program->cy
-		);
-	//printf("%Lf, %Lf\n", c.re, c.im);
+	c.re = ((long double)x / (long double)program->window_w - 0.5)
+		* len + program->cx;
+	c.im = ((long double)y / (long double)program->window_h - 0.5)
+		* len + program->cy;
 	return (c);
 }
 

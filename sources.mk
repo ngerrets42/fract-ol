@@ -8,6 +8,7 @@ SOURCES :=	src/colormap.c \
 	src/main.c \
 	src/mandelbrot.c \
 	src/newton.c \
+	src/parsing.c \
 	src/program.c \
 	src/str.c \
 	src/str_to_double.c \

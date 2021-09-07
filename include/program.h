@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 10:58:59 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:47:52 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/07 14:37:05 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../lib/mlx_mac/mlx.h"
 # include <stdlib.h>
 # include <stddef.h>
+# include <stdio.h>
 # include "str.h"
 
 # define DEFAULT_ZOOM 2.0
@@ -66,11 +67,14 @@ typedef struct s_program
 	long double	arg2;
 }	t_program;
 
+int			parse(int argc, char **argv, t_program *program);
+
 t_img		*img_create(t_program *program, int w, int h);
 void		img_destroy(t_program *program, t_img *img);
 void		img_set_pixel(t_img *img, int x, int y, int trgb);
 
-t_program	*program_initialize_mlx(void);
+t_program	*program_init(void);
+int			program_initialize_mlx(t_program *program);
 void		program_quit(t_program *program);
 
 int			hook_key_pressed(int key, t_program *program);
