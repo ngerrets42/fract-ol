@@ -6,7 +6,7 @@
 #    By: ngerrets <ngerrets@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/07/15 14:47:03 by ngerrets      #+#    #+#                  #
-#    Updated: 2021/09/07 12:16:52 by ngerrets      ########   odam.nl          #
+#    Updated: 2021/09/23 10:40:23 by ngerrets      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@
 FPS_MULTIPLIER := 1
 
 NAME := fract-ol
-COMPILE_FLAGS ?= -Wall -Wextra -g -fsanitize=address
-LINKING_FLAGS ?= -Llib/get_next_line -lgnl -g -fsanitize=address
+COMPILE_FLAGS ?= -Wall -Wextra
+LINKING_FLAGS ?= -Llib/get_next_line -lgnl
 LIBRARIES ?=
 SOURCE_DIRECTORY ?= src
 HEADER_DIRECTORY ?= include
