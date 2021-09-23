@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 14:22:08 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 14:44:24 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:58:32 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ static void	parse_julia(int argc, char **argv, t_program *program)
 	program->arg2 = str_to_double(argv[3]);
 }
 
+/*
+**	Basic parsing of argv
+*/
 int	parse(int argc, char **argv, t_program *program)
 {
 	if (argc < 2)

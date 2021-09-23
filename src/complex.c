@@ -6,12 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/06 14:43:21 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:28:48 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:53:56 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "complex_numbers.h"
 
+/*
+**	Complex numbers are numbers with a REAL and IMAGINARY components. It's
+**	basically a vector.
+*/
 t_complex	_complex(long double real, long double imaginair)
 {
 	t_complex	c;

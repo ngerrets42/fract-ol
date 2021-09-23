@@ -6,12 +6,11 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:01:02 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 12:22:08 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 11:00:02 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
-#include <unistd.h>
 
 int	ft_strlen(const char *str)
 {

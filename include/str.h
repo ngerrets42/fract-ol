@@ -6,12 +6,14 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:00:08 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/31 12:54:41 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 11:00:13 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STR_H
 # define STR_H
+
+# include <unistd.h>
 
 int		ft_strlen(const char *str);
 void	put(const char *str, const int *n);

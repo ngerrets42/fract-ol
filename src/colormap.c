@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 13:26:29 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:48:07 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:52:59 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ t_rgb	colormap_16_get(int i)
 	return (c[i % 16]);
 }
 
+/*
+**	Colormaps are just basic arrays of RGB values.
+*/
 int	colormap_get_trgb(t_rgb(*colormap)(int), int i)
 {
 	t_rgb	c;

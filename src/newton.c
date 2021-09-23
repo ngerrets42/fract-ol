@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/06 14:30:25 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 14:31:22 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:58:08 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #define ROOT_THREE 1.73205080757
 #define TOLERANCE 0.001
 
+/*
+**	The base function for the newton fractal
+*/
 static t_complex	func(t_complex z)
 {
 	z = complex_pow(z, 3);
@@ -22,6 +25,9 @@ static t_complex	func(t_complex z)
 	return (z);
 }
 
+/*
+**	Derivative of the base function
+*/
 static t_complex	derivative(t_complex z)
 {
 	z = complex_pow(z, 2);
@@ -30,6 +36,9 @@ static t_complex	derivative(t_complex z)
 	return (z);
 }
 
+/*
+**	The roots to check in the newton fractal.
+*/
 static int	check_roots(t_complex z)
 {
 	int					i;
@@ -53,6 +62,9 @@ static int	check_roots(t_complex z)
 	return (0);
 }
 
+/*
+**	The root that's closest to complex number z
+*/
 static int	closest_root(t_complex z)
 {
 	int					i;
@@ -82,6 +94,10 @@ static int	closest_root(t_complex z)
 	return (index);
 }
 
+/*
+**	Pixel calculations for the newton fractal. newton fractal requires more
+**	complex calculations.
+*/
 int	newton_pixel(int x, int y, t_program *program)
 {
 	t_complex	z;

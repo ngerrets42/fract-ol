@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/30 15:51:22 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:48:58 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:52:17 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ static int	hue(double value)
 	return (0 << 24 | c.r << 16 | c.g << 8 | c.b);
 }
 
+/*
+**	Converts iterations to an int-color based on the colormode.
+*/
 int	color_from_iterations(int i, int max_iterations, t_program *program)
 {
 	if (i >= max_iterations)

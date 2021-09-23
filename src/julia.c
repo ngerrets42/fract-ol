@@ -6,12 +6,15 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/30 14:54:38 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/06 15:30:12 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:55:51 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
 
+/*
+**	Pixel calculations for the julia-fractal.
+*/
 int	julia_pixel(int x, int y, t_program *program)
 {
 	t_complex	c;

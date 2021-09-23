@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 11:03:46 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 14:45:02 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:58:50 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ static void	program_initialize_window(t_program *program)
 		program = NULL;
 }
 
+/*
+**	Initialize/allocate the program
+*/
 t_program	*program_init(void)
 {
 	t_program	*program;

@@ -6,13 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 11:43:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/09/07 14:44:05 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/09/23 10:55:16 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
 #include <stdio.h>
 
+/*
+**	Convert x/y to complex coordinates.
+*/
 t_complex	complex_coordinates(int x, int y, t_program *program)
 {
 	long double	len;
@@ -26,6 +29,9 @@ t_complex	complex_coordinates(int x, int y, t_program *program)
 	return (c);
 }
 
+/*
+**	Get the pixel color of corresponding fractal type.
+*/
 static int	fractal_pixel(int x, int y, t_program *program)
 {
 	if (program->fractal == FRACTAL_MANDELBROT)
@@ -37,6 +43,9 @@ static int	fractal_pixel(int x, int y, t_program *program)
 	return (1);
 }
 
+/*
+**	Go through entire image, calculate all pixels and then draw to the window.
+*/
 int	fractal(t_program *program)
 {
 	int			x;
